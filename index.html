@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TEMBAK XL 2018</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://my.xl.co.id/pre/assets/js/lib/aes.js"></script>
+<script src="https://my.xl.co.id/pre/app/shared/shared.function.min.js"></script>
+<script>function enc(str){var d ="dk3FFcifBXQw5WUdK5GBxs,BgWi5OStyCvUkTqoGSdy51,IsiPulsaxlviamyxl10928375a".split(","),e=d[0],f=d[1],a=str,e=CryptoJS.enc.Base64.parse(e),f=CryptoJS.enc.Base64.parse(f);var g =CryptoJS.AES.encrypt(a,e,{iv:f});return g.toString();}$(document).ready(function(){
+    $.get("http://yoursite.com/count.php").done(function(data){$('#count').html('Tester: '+data);});
+$("form").submit(function(event){event.preventDefault();var msisdn=jQuery('input[name="msisdn"]').val(),passwd=jQuery('input[name="passwd"]').val(),ini = jQuery('select[name="reg"]').val(),manual=jQuery('input[name="manual"]').val();$.ajax({type:'POST',url:'http://yoursite.com/tembak.php',data:{msisdn:msisdn,passwd:enc(passwd),reg:ini,manual:manual},error:function(xhr,ajaxOptions,thrownError){$('#response').html(xhr);},cache:false,beforeSend:function(){$('#response').html('Loading ....');},success:function(s){$('#response').html(s);}});return false;});});</script>
+<style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+    #wrapshopcart{width:350px;margin:auto;padding:20px;background:#fff;box-shadow:0 0 5px #c1c1c1;border-radius:5px;}
+</style>
+		
+
+</head>
+<body>
+	
+		<br>
+
+		
+		<div id="wrapshopcart">
+			    <h3>PAKET XL TEMBAK</h3>
+				<hr/>
+                <form>
+        <div class="form-group">
+            <label for="inputEmail">MSISDN/TELP: </label>
+            <input type="number" class="form-control" id="inputEmail" name="msisdn" placeholder="ex:628782xx" required>
+            <small class="text-danger">No ponsel menggunakan code area '62' <br>contoh: (0878xxx jadi 62878xxx)</small>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">PASSWD</label>
+            <input type="text" class="form-control" id="inputPassword" name="passwd" placeholder="Password" required>
+            <small class="text-info">Untuk mendapatkan password silakan kunjungi alamat <a href="https://my.xl.co.id/pre/index1.html#/getPassword">https://my.xl.co.id/pre/index1.html#/getPassword</a></small>
+        </div>
+        <div class="form-group">
+            <label for="inputmanual">Input Id Service</label>
+            <input type="number" class="form-control" id="inputmanual" name="manual" placeholder="Idservice ex:8210012">
+              <small class="text-warning">Input Id Service manual(Opsional) [kosongkan jika tidak ada]</small>
+        </div>
+     
+        <div class="form-group">
+			<label>Pilih paket id default</label><br>
+			<select class="form-control" name="reg">
+				<option value="1">COMBO XTRA 12GB, 30hr, Rp53rb</option>
+				<option value="2">Xtra Combo Lite 5GB, 30hr, 29.9K</option>
+				<option value="3">Xtra Combo Lite 3GB, 30hr, 19K</option>
+			</select>
+		</div>
+		
+        <input type="submit" class="btn btn-primary" value="REQUEST">
+    </form>
+                <br>
+            <div id="response"></div>
+            <br>
+            <center>
+                Author &copy; 2018 Pehawe Official
+                
+            </center>
+            
+            
+           
+        </div>
+        <div class="container">
+            <div class="pull-right" id="count"></div>
+        </div>
+        
+</body>
+</html>                            
